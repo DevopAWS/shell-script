@@ -1,10 +1,22 @@
 #!/bin/bash
 
-
-
 ID=($id -u)
 
-if [ $ID -ne 0];then
+R="\e[31m"
+G="\e[32m"
+N="\e[0m"
+
+VALIDATE(){
+
+if [ $1 -ne 0 ];then
+    echo "error::$2....${R}failure..${N}"
+    exit 1
+        else
+            echo "$2...${G}success..${N}"
+fi
+}
+
+if [ $ID -ne 0 ];then
     echo "ERROR::script is run with root user"
     exit 1
         else
@@ -12,10 +24,8 @@ if [ $ID -ne 0];then
 fi
 
 yum install git -y
+VALIDATE $? "git installed is"
 
-if [ $ID -ne 0 ];then
-    echo "git installed failure.."
-    exit 1
-        else
-            echo "git installed success"
-fi
+yum install mysql -y
+VALIDATE $? "mysql inslled is" 
+
