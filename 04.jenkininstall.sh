@@ -45,6 +45,8 @@ rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key &>>$LOG
 
 VALIDATE $? "package install"
 
+amazon-linux-extras install epel -y &>> $LOG
+VALIDATE $? "amazon install"
 
 amazon-linux-extras install java-openjdk11 -y &>>$LOG
 
@@ -66,6 +68,6 @@ systemctl status jenkins &>>$LOG
 
 VALIDATE $? "jenkins status"
 
-lss -ltr &>>$LOG
+#lss -ltr &>>$LOG
 
-VALIDATE $? "wrong meassge"
+#VALIDATE $? "wrong meassge"
