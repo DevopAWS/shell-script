@@ -36,19 +36,19 @@ yum update -y &>>$LOG
 VALIDATE $? "yum install" 
 
 
-wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo  &>>$LOG
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo  &>>$LOG
 	
 	VALIDATE $? " install repo"
 	
-rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key &>>$LOG
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key &>>$LOG
 
 VALIDATE $? "package install"
 
-amazon-linux-extras install epel -y &>> $LOG
-VALIDATE $? "amazon install"
+yum install epel-release -y &>> $LOG
 
-amazon-linux-extras install java-openjdk11 -y &>>$LOG
+VALIDATE $? "epel install"
+
+yum install java-11-openjdk-devel -y &>>$LOG
 
 VALIDATE $? "java install"
 
