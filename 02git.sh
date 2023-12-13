@@ -6,6 +6,8 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 
+LOGFILE="/tmp/$0.log"
+
 VALIDATE(){
 
 if [ $1 -ne 0 ];then
@@ -23,9 +25,9 @@ if [ $ID -ne 0 ];then
             echo "you r root user"
 fi
 
-yum install git -y
+yum install git -y &>> $LOGFILE
 VALIDATE $? "git installed is"
 
-yum install mysql -y
+yum install mysql -y &>. $LOGFILE
 VALIDATE $? "mysql inslled is" 
 
