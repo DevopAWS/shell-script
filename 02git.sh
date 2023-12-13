@@ -2,11 +2,15 @@
 
 ID=($id -u)
 
+TIMESTAMP=$(date +%F)
+
 R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 
-LOGFILE="/tmp/$0.log"
+LOGFILE="/tmp/$0-$TIMESTAMP.log"
+
+echo "script is excuting at $TIMESTAMP " &>> $LOGFILE 
 
 VALIDATE(){
 
@@ -25,9 +29,9 @@ if [ $ID -ne 0 ];then
             echo "you r root user"
 fi
 
-yum install git -y &>> $LOGFILE
+yum install git -y  &>> $LOGFILE
 VALIDATE $? "git installed is"
 
-yum install mysql -y &>. $LOGFILE
+yum install mysql -y  &>> $LOGFILE
 VALIDATE $? "mysql inslled is" 
 
