@@ -46,9 +46,13 @@ wget -O /etc/yum.repos.d/jenkins.repo \
 
     VALIDATE $? "importing package is "
 
-    amazon-linux-extras install java-openjdk11 -y &>> $LOGFILE
+    amazon-linux-extras install epel -y &>> $LOGFILE
 
-    VALIDATE $? "java install"
+    VALIDATE $? "amazaon package is "
+
+    amazon-linux-extras install java-openjdk11 -y  &>> $LOGFILE
+
+    VALIDATE $? "java install is "
 
     yum install jenkins -y &>> $LOGFILE
 
