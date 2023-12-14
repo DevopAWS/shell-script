@@ -29,19 +29,16 @@ if [ $USERID -ne 0 ];then
 fi
 
 for package in $@
-do
+    do
+        yum list installed $package 
+        if [ $? -ne 0 ];then
+            yum install $package -y &>> $LOGFILE
+            VALIDATE $? "installation of $package"
+            else
+                echo -e "$package is aleready installed..$Y Skipping $N" 
 
-yum list installed $package
-
-if [ $? -ne 0 ];then
-
-    yum install $package -y
-    
-    VALIDATE $? "installation of $package"
-    else
-        echo -e "package is aleready installed...$Y skipping $N"
-fi
-done
+        fi
+     done    
 
 
 
