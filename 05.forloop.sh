@@ -21,8 +21,6 @@ VALIDATE(){
     fi
 }
 
-
-
 if [ $USERID -ne 0 ];then
     echo -e "$R excuting script with root user $N"
     exit 1
