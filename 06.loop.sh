@@ -37,6 +37,10 @@ if [ $id -ne 0 ]; then
             yum install $package -y 
             VALIDATE $? "installation of $package"
             else
-                echo -e ""$package is aleready installed..$Y Skipping $N"
+                echo -e "$package is aleready installed..$Y Skipping $N" 
+
         fi
-   done 
+     done    
+
+        
+    
