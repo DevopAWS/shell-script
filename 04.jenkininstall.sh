@@ -38,7 +38,7 @@ VALIDATE $? "yum install"
 
 wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo  &>>$LOG
 	
-	VALIDATE $? " install repo"
+	VALIDATE $? "install repo"
 	
 rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key &>>$LOG
 

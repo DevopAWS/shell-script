@@ -10,7 +10,7 @@ N="\e[0m"
 
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
-echo "script is excuting at $TIMESTAMP " &>> $LOGFILE 
+echo "script is excuting at $TIMESTAMP" &>> $LOGFILE 
 
 VALIDATE(){
 
