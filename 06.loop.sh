@@ -32,9 +32,9 @@ if [ $id -ne 0 ]; then
 
     for package in $@
     do
-        yum list installed $package
+        yum list installed $package 
         if [ $? -ne 0 ];then
-            yum install $package -y 
+            yum install $package -y &>> $LOGFILE
             VALIDATE $? "installation of $package"
             else
                 echo -e "$package is aleready installed..$Y Skipping $N" 
